@@ -1,6 +1,5 @@
 import { useEffect } from "react"
 import Navbar from "./components/Navbar"
-import { fetchCurrencies } from "./utils/utils"
 import Converter from "./components/Converter"
 
 

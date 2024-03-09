@@ -2,7 +2,7 @@ import fetchData from "./fetchData";
 
 export const fetchCurrencies = async () => {
 
-  const currencies = {
+  let currencies = {
     AED: "United Arab Emirates Dirham",
     AFN: "Afghan Afghani",
     ALL: "Albanian Lek",
@@ -146,7 +146,13 @@ export const fetchCurrencies = async () => {
     TJS: "Tajikistani Somoni",
     TMT: "Turk"
   }
-
-  return currencies
-    // fetchData('symbols', {})
+  // currencies = await fetchData("symbol", {});
+  // console.log(currencies.symbols)
+  return currencies || null
+    
 };
+
+export const convert =async (from, to, amount) => {
+  const data =  await fetchData("convert", { from, to, amount });
+  return data.result || null;
+}

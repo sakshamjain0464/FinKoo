@@ -4,7 +4,7 @@
 
 body{
     background-color: #f1eefd;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .w-converter{

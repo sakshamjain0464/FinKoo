@@ -15,7 +15,7 @@ const fetchData = async (endpoint, params) => {
       
       try {
           const response = await axios.get(`https://currency-conversion-and-exchange-rates.p.rapidapi.com/${endpoint}`, options);
-          console.log(response.data);
+          return response.data;
       } catch (error) {
           console.error(error);
       }
