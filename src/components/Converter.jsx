@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { fetchCurrencies, convert } from "../utils/utils";
+import { fetchCurrencies, convert} from "../utils/utils";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrrencies } from "../slices/currenciesSlice";
 import { setFrom, setTo } from "../slices/converterSlice";
 import { HiArrowPath } from "react-icons/hi2";
 import ConverterSection from "./ConverterSection";
+
 
 function Converter() {
   const [rotationDegree, setRotationDegree] = useState(0);

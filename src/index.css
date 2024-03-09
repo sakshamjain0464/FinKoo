@@ -10,3 +10,29 @@ body{
 .w-converter{
     width: calc(50% - 1rem);
 }
+
+input[type="radio"]{
+    margin-left: 2rem;
+    margin-right: 0.2rem;
+}
+
+label{
+    font-size: 1.2rem;
+}
+
+input[type="radio"]::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: relative;
+    top: 2px;
+    padding: 1px;
+    border: 1px solid #000; /* Change this to change the border color */
+    background-color: #fff; /* Change this to change the background color */
+}
+
+input[type="radio"]:checked::before {
+    background-color: rgb(98 57 235); /* Change this to change the color when checked */
+}

@@ -1,4 +1,5 @@
 import fetchData from "./fetchData";
+import moment from 'moment';
 
 export const fetchCurrencies = async () => {
 
@@ -149,10 +150,35 @@ export const fetchCurrencies = async () => {
   // currencies = await fetchData("symbol", {});
   // console.log(currencies.symbols)
   return currencies || null
-    
+
 };
 
-export const convert =async (from, to, amount) => {
-  const data =  await fetchData("convert", { from, to, amount });
+export const convert = async (from, to, amount) => {
+  const data = await fetchData("convert", { from, to, amount });
   return data.result || null;
+}
+
+export const fetchGraphData = async (mode, from, to) => {
+
+  let toDate = moment().format('YYYY-MM-DD');
+  let fromDate = undefined
+
+  if (mode === "Month") {
+    fromDate = moment().subtract(1, 'months').format('YYYY-MM-DD');
+  }
+  else if (mode === "Year") {
+    fromDate = moment().subtract(1, 'years').format('YYYY-MM-DD');
+  }
+  else {
+    fromDate = moment().subtract(1, 'weeks').format('YYYY-MM-DD');
+  }
+
+  const data = await fetchData("timeseries", { start_date: fromDate, end_date: toDate, from, to });
+  console.log(data)
+  if (data) {
+    const rates = data.rates;
+    var dates = Object.keys(rates).sort((a, b) => new Date(a) - new Date(b));
+    var rateList = dates.map((date) => rates[date][to]);
+  }
+  return { dates, rateList } || null;
 }
