@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body{
+    background-color: #f1eefd;
+    overflow: hidden;
+}
+
+.w-converter{
+    width: calc(50% - 1rem);
+}

@@ -1,11 +1,17 @@
+import { useEffect } from "react"
+import Navbar from "./components/Navbar"
+import { fetchCurrencies } from "./utils/utils"
+import Converter from "./components/Converter"
 
 
 function App() {
-  
-
   return (
     <>
-      <h1 className="text-center">FinKoo</h1>
+    <Navbar />
+    <main className='h-screen md:h-[90vh] px-10 py-10 w-screen'>
+        <Converter />
+    </main>
+    
     </>
   )
 }
