@@ -12,7 +12,7 @@ function Navbar() {
         <img src={Logo} className="h-12 drop-shadow-xl hover:scale-125 hover:rotate-12" alt="Logo" />
         <span className="self-center text-3xl tracking-wider font-semibold whitespace-nowrap text-black hover:tracking-widest transition-all duration-300">FinKoo</span>
     </a>
-    <a href="#" className="hidden md:flex text-4xl hover:text-[#60587b]">
+    <a href="https://github.com/sakshamjain0464/FinKoo" target='_blank' className="hidden md:flex text-4xl hover:text-purple-950">
         <FaGithub />
     </a>
   </div>

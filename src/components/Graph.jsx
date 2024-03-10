@@ -10,6 +10,8 @@ import {
   LineElement,
 } from "chart.js";
 
+import { Radio } from "react-loader-spinner";
+
 Chart.register(
   LineController,
   CategoryScale,
@@ -20,6 +22,7 @@ Chart.register(
 
 function Graph() {
   const [selectedOption, setSelectedOption] = useState("Week");
+  const [loading, setLoading] = useState(false);
   const from = useSelector((state) => state.converter.fromValue);
   const to = useSelector((state) => state.converter.toValue);
 
@@ -28,28 +31,30 @@ function Graph() {
     await handleFetchGraphData(e.target.value);
   };
 
-  const [data, setData] = useState(null);
   const chartRef = useRef(null);
 
   async function handleFetchGraphData(mode) {
+    if (chartRef.current) {
+      chartRef.current.destroy();
+    }
+
+    setLoading(true);
+
     const { dates, rateList } = await fetchGraphData(mode, from, to);
 
     if (dates && rateList) {
-      if (chartRef.current) {
-        chartRef.current.destroy();
-      }
-      setData({
+      const data = {
         labels: dates,
         datasets: [
           {
             label: `1 ${from} = x ${to}`,
             data: rateList,
             fill: false,
-            backgroundColor: "rgb(255, 99, 132)",
-            borderColor: "rgba(255, 99, 132, 0.2)",
+            backgroundColor: "#6239eb",
+            borderColor: "rgba(168, 85, 247, 0.2)",
           },
         ],
-      });
+      };
 
       chartRef.current = new Chart(
         document.getElementById("chart").getContext("2d"),
@@ -59,10 +64,14 @@ function Graph() {
           options: {
             responsive: true,
             maintainAspectRatio: false,
+            tooltip: {
+              enabled: true,
+            },
           },
         }
       );
     }
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -72,7 +81,7 @@ function Graph() {
   return (
     <div className="w-full mt-10 h-[50vh] flex flex-col gap-3">
       <div className="flex flex-col text-center items-center py-3 text-3xl font-medium tracking-widest">
-        <h1>Exchange Rates</h1>
+        <h1>Exchange Rates of {to} with EUR</h1>
       </div>
       <div className="w-full flex flex-wrap justify-center">
         <input
@@ -109,6 +118,17 @@ function Graph() {
         <label htmlFor="option3">Year</label>
       </div>
       <div className="h-[70%] w-full mt-5">
+        {loading && (
+          <div className="flex justify-center items-center w-full h-full">
+            <Radio
+              visible={true}
+              height="80"
+              width="80"
+              ariaLabel="radio-loading"
+              colors={['rgb(168 85 247)', 'rgb(168 85 247)', 'rgb(168 85 247)']}
+            />
+          </div>
+        )}
         <canvas id="chart" height={"100%"} width={"100%"}></canvas>
       </div>
     </div>

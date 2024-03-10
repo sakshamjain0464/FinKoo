@@ -173,6 +173,8 @@ export const fetchGraphData = async (mode, from, to) => {
     fromDate = moment().subtract(1, 'weeks').format('YYYY-MM-DD');
   }
 
+  console.log(fromDate, toDate, from, to, mode)
+
   const data = await fetchData("timeseries", { start_date: fromDate, end_date: toDate, from, to });
   console.log(data)
   if (data) {

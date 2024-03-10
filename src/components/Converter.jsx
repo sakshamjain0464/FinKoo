@@ -52,7 +52,7 @@ function Converter() {
   };
 
   return (
-    <div className="w-full max-h-200 flex flex-col md:h-[60%] h-[60%]">
+    <div className="w-full max-h-fit flex flex-col md:h-[60%] h-[60%]">
       <div className="mim-w-full h-full  grid gap-6 grid-cols-4 mt-3  grid-rows-4 relative">
         <ConverterSection
           currency={fromCurrency}

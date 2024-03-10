@@ -36,3 +36,12 @@ input[type="radio"]::before {
 input[type="radio"]:checked::before {
     background-color: rgb(98 57 235); /* Change this to change the color when checked */
 }
+
+::-webkit-scrollbar {
+    display: none;
+  }
+
+  html{
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
