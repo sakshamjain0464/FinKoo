@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { ThreeDots } from "react-loader-spinner";
 
 function ConverterSection({ value, setValue, currency, setCurrency }) {
   const currencies = useSelector((state) => state.currencies.currencies);
@@ -27,6 +27,17 @@ function ConverterSection({ value, setValue, currency, setCurrency }) {
           )}
         </div>
       </div>
+      {currency === toCurrency && (
+        <div className="w-full h-full flex items-center" id="toLoader">
+          <ThreeDots
+            visible={true}
+            height="60"
+            width="60"
+            ariaLabel="radio-loading"
+            color="rgb(168 85 247)"
+          />
+        </div>
+      )}
       <div className="w-full h-full flex items-center px-5 text-5xl">
         <input
           type="number"

@@ -28,8 +28,11 @@ function Converter() {
   }, []);
 
   async function handleConvert() {
-    document.getElementById("toValueField").value = "000000";
+    document.getElementById("toValueField").style.display = "none";
+    document.getElementById("toLoader").style.display = "block";
     const result = await convert(fromCurrency, toCurrency, fromValue);
+    document.getElementById("toLoader").style.display = "none";
+    document.getElementById("toValueField").style.display = "block";
     if(result) setToValue(result.toFixed(2));
   }
 

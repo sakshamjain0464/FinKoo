@@ -3,7 +3,7 @@ import { FaGithub } from "react-icons/fa6";
 
 function Footer() {
   return (
-    <div className={'w-full h-fit flex mt-5 gap-4 items-center justify-center text-lg tracking-wider pb-3'}>
+    <div className={'w-full h-fit flex gap-4 items-center justify-center text-lg tracking-wider pb-3'}>
         <p>Created By - Saksham Jain</p>
         <a
           href="https://github.com/sakshamjain0464/ShufflIt"

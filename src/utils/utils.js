@@ -147,10 +147,7 @@ export const fetchCurrencies = async () => {
     TJS: "Tajikistani Somoni",
     TMT: "Turk"
   }
-  // currencies = await fetchData("symbol", {});
-  // console.log(currencies.symbols)
   return currencies || null
-
 };
 
 export const convert = async (from, to, amount) => {

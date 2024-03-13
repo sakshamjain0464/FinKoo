@@ -76,10 +76,10 @@ function Graph() {
 
   useEffect(() => {
     handleFetchGraphData(selectedOption);
-  }, [from, to]);
+  }, [to]);
 
   return (
-    <div className="w-full mt-10 h-[50vh] flex flex-col gap-3">
+    <div className="w-full mt-10 min-h-[50vh] h-fit flex flex-col gap-3">
       <div className="flex flex-col text-center items-center py-3 text-3xl font-medium tracking-widest">
         <h1>Exchange Rates of {to} with EUR</h1>
       </div>
